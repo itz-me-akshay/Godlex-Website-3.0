@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Copy, Check, ChevronDown } from "lucide-react";
+import { Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
@@ -109,18 +109,6 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer"
-        onClick={() => document.getElementById("server-status")?.scrollIntoView({ behavior: "smooth" })}
-      >
-        <div className="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:bg-white/10 transition-colors">
-          <ChevronDown className="w-5 h-5 text-primary" />
-        </div>
-      </motion.div>
     </section>
   );
 }
