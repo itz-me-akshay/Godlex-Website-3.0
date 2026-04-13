@@ -7,8 +7,8 @@ import { useToast } from "@/hooks/use-toast";
 export function Hero() {
   const { toast } = useToast();
   const [copied, setCopied] = useState(false);
-  const javaIP = "godlex.kymc.xyz:45799";
-  const bedrockIP = "godlex.kymc.xyz";
+  const javaIP = "in.kymc.xyz:45799";
+  const bedrockIP = "in.kymc.xyz";
   const bedrockPort = "45799";
 
   const handleCopyIP = () => {
@@ -42,7 +42,7 @@ export function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <span className="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-primary-foreground text-sm font-medium tracking-wide mb-6">
-            Season 1 is LIVE
+            Season 2 is LIVE
           </span>
 
           <motion.div

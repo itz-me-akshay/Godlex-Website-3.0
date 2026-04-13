@@ -20,7 +20,7 @@ export function Footer() {
           A premium Minecraft survival multiplayer experience. Join our community today and start your adventure.
         </p>
         <div className="text-sm font-medium text-white/40">
-          © {new Date().getFullYear()} Godlex SMP. Created by ZrockeyZore. All rights reserved.
+          © {new Date().getFullYear()} Godlex SMP. Created by Akshay. All rights reserved.
         </div>
         <div className="mt-2 text-xs text-white/30">
           Not affiliated with Mojang AB or Microsoft.
