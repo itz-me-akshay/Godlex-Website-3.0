@@ -4,7 +4,6 @@ import { useServerStatus } from "@/hooks/use-server-status";
 
 export function ServerStatus() {
   const { data, isLoading, isError, refetch } = useServerStatus();
-
   const online = data?.online ?? false;
 
   return (
@@ -36,7 +35,7 @@ export function ServerStatus() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-2xl mx-auto"
+          className="max-w-lg mx-auto"
         >
           <div className="glass-card rounded-2xl border border-white/10 p-8">
             {isLoading ? (
@@ -51,7 +50,7 @@ export function ServerStatus() {
               </div>
             ) : (
               <div className="space-y-6">
-                {/* Status indicator */}
+                {/* Status row */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     {online ? (
@@ -62,11 +61,7 @@ export function ServerStatus() {
                     <span className="text-xl font-bold text-white">
                       {online ? "Online" : "Offline"}
                     </span>
-                    <span
-                      className={`w-2.5 h-2.5 rounded-full ${
-                        online ? "bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.8)]" : "bg-red-400"
-                      }`}
-                    />
+                    <span className={`w-2.5 h-2.5 rounded-full ${online ? "bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.8)]" : "bg-red-400"}`} />
                   </div>
                   <button
                     onClick={() => refetch()}
@@ -79,22 +74,22 @@ export function ServerStatus() {
 
                 <div className="w-full h-px bg-white/10" />
 
-                {/* Info grid */}
-                <div className="grid grid-cols-2 gap-4">
+                {/* Info */}
+                <div className="flex flex-col gap-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                    <div className="w-10 h-10 shrink-0 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
                       <Server className="w-5 h-5 text-primary" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <p className="text-xs text-white/40 uppercase tracking-wider">IP</p>
-                      <p className="text-sm font-semibold text-white font-mono">
-                        play.godlexsmp.com
+                      <p className="text-sm font-semibold text-white font-mono truncate">
+                        godlex.kymc.xyz:45799
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                    <div className="w-10 h-10 shrink-0 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
                       <Users className="w-5 h-5 text-primary" />
                     </div>
                     <div>
@@ -108,7 +103,10 @@ export function ServerStatus() {
                   </div>
 
                   {data?.version && (
-                    <div className="col-span-2 flex items-center gap-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 shrink-0 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                        <span className="text-primary text-xs font-bold">VER</span>
+                      </div>
                       <div>
                         <p className="text-xs text-white/40 uppercase tracking-wider">Version</p>
                         <p className="text-sm font-semibold text-white">{data.version}</p>
@@ -122,16 +120,12 @@ export function ServerStatus() {
                   <div>
                     <div className="flex justify-between text-xs text-white/40 mb-2">
                       <span>Capacity</span>
-                      <span>
-                        {Math.round((data.players.online / data.players.max) * 100)}%
-                      </span>
+                      <span>{Math.round((data.players.online / data.players.max) * 100)}%</span>
                     </div>
                     <div className="w-full h-2 rounded-full bg-white/10 overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
-                        animate={{
-                          width: `${(data.players.online / data.players.max) * 100}%`,
-                        }}
+                        animate={{ width: `${(data.players.online / data.players.max) * 100}%` }}
                         transition={{ duration: 1, ease: "easeOut" }}
                         className="h-full rounded-full bg-gradient-to-r from-primary to-secondary"
                       />
