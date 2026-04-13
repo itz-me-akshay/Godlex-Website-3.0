@@ -83,7 +83,7 @@ export function ServerStatus() {
                     <div className="min-w-0">
                       <p className="text-xs text-white/40 uppercase tracking-wider">IP</p>
                       <p className="text-sm font-semibold text-white font-mono truncate">
-                        godlex.kymc.xyz:45799
+                        in.kymc.xyz:45799
                       </p>
                     </div>
                   </div>
