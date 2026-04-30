@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Gamepad2 } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useLocation } from "wouter";
 
 const NAV_LINKS = [
-  { name: "Home", href: "#home" },
-  { name: "Server Status", href: "#server-status" },
-  { name: "Ranks", href: "#ranks" },
-  { name: "Discord", href: "#discord" },
+  { name: "Home", href: "/" },
+  { name: "Server Status", href: "/server-status" },
+  { name: "Ranks", href: "/ranks" },
+  { name: "Discord", href: "/discord" },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [location, navigate] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,13 +33,16 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          
+
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center gap-2">
-            <img 
-              src="/favicon.gif" 
-              alt="Godlex Logo" 
-              className="w-10 h-10 rounded-xl shadow-lg shadow-primary/20 object-cover" 
+          <div
+            className="flex-shrink-0 flex items-center gap-2 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            <img
+              src="/favicon.gif"
+              alt="Godlex Logo"
+              className="w-10 h-10 rounded-xl shadow-lg shadow-primary/20 object-cover"
             />
             <span className="font-display font-bold text-xl tracking-tight text-white">
               GODLEX<span className="text-primary">SMP</span>
@@ -50,7 +55,16 @@ export function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-white/80 hover:text-white transition-colors hover:drop-shadow-[0_0_8px_rgba(124,58,237,0.5)]"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate(link.href);
+                }}
+                className={cn(
+                  "text-sm font-medium transition-colors hover:drop-shadow-[0_0_8px_rgba(124,58,237,0.5)]",
+                  location === link.href
+                    ? "text-primary drop-shadow-[0_0_8px_rgba(124,58,237,0.5)]"
+                    : "text-white/80 hover:text-white"
+                )}
               >
                 {link.name}
               </a>
@@ -83,8 +97,17 @@ export function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-3 rounded-lg text-base font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate(link.href);
+                  setMobileMenuOpen(false);
+                }}
+                className={cn(
+                  "block px-3 py-3 rounded-lg text-base font-medium transition-colors hover:bg-white/5",
+                  location === link.href
+                    ? "text-primary"
+                    : "text-white/80 hover:text-white"
+                )}
               >
                 {link.name}
               </a>

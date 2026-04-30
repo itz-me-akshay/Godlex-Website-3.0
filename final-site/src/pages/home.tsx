@@ -1,9 +1,6 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/sections/hero";
-import { ServerStatus } from "@/components/sections/server-status";
-import { Ranks } from "@/components/sections/ranks";
-import { Discord } from "@/components/sections/discord";
 import { StaffTeam } from "@/components/sections/staff-team";
 
 export default function Home() {
@@ -12,12 +9,6 @@ export default function Home() {
       <Navbar />
       <div className="flex-1">
         <Hero />
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-        <ServerStatus />
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-        <Ranks />
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-        <Discord />
         <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
         <StaffTeam />
       </div>

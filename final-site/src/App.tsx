@@ -7,6 +7,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/home";
+import ServerStatusPage from "@/pages/server-status";
+import RanksPage from "@/pages/ranks";
+import DiscordPage from "@/pages/discord";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -15,6 +18,9 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/server-status" component={ServerStatusPage} />
+      <Route path="/ranks" component={RanksPage} />
+      <Route path="/discord" component={DiscordPage} />
       <Route component={NotFound} />
     </Switch>
   );
